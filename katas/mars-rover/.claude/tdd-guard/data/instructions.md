@@ -42,6 +42,13 @@ Each step in TDD should address ONE specific issue:
 - Test fails "not a function" → Add method stub only  
 - Test fails with assertion → Implement minimal logic only
 
+### CRITICAL: Minimal Implementation Rule
+**ONLY implement the exact code needed for the current failing test**
+- If test expects movement North, ONLY implement North movement 
+- Do NOT implement East, South, West movement until there are failing tests for them
+- Each direction should require its own failing test before implementation
+- This applies to ALL functionality - implement only what the current test requires
+
 ### General Information
 - Sometimes the test output shows as no tests have been run when a new test is failing due to a missing import or constructor. In such cases, allow the agent to create simple stubs. Ask them if they forgot to create a stub if they are stuck.
 - It is never allowed to introduce new logic without evidence of relevant failing tests. However, stubs and simple implementation to make imports and test infrastructure work is fine.

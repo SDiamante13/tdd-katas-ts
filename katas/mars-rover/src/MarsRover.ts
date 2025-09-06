@@ -7,6 +7,8 @@ export class MarsRover {
         this.turnLeft();
       } else if (command === 'R') {
         this.turnRight();
+      } else if (command === 'F') {
+        this.moveForward();
       }
     }
   }
@@ -21,5 +23,11 @@ export class MarsRover {
     const directions = ['N', 'E', 'S', 'W'];
     const currentIndex = directions.indexOf(this.direction);
     this.direction = directions[(currentIndex + 1) % 4];
+  }
+
+  private moveForward(): void {
+    if (this.direction === 'N') {
+      this.y += 1;
+    }
   }
 }

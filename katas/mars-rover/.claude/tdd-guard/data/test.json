@@ -4,18 +4,18 @@
       "moduleId": "/Users/stevendiamante/personal/tdd-katas-ts/katas/mars-rover/src/MarsRover.test.ts",
       "tests": [
         {
-          "name": "should turn left from North to West",
-          "fullName": "Mars Rover turning should turn left from North to West",
+          "name": "should complete full left rotation cycle",
+          "fullName": "Mars Rover turning should complete full left rotation cycle",
           "state": "passed"
         },
         {
-          "name": "should turn right from North to East",
-          "fullName": "Mars Rover turning should turn right from North to East",
+          "name": "should complete full right rotation cycle",
+          "fullName": "Mars Rover turning should complete full right rotation cycle",
           "state": "passed"
         },
         {
-          "name": "should turn left twice with LL command from North to South",
-          "fullName": "Mars Rover turning should turn left twice with LL command from North to South",
+          "name": "should move forward North by 1",
+          "fullName": "Mars Rover movement should move forward North by 1",
           "state": "passed"
         }
       ]
