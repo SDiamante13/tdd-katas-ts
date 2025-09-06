@@ -10,10 +10,10 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "*",
     "jest": "*",
+    "tdd-guard-jest": "^0.1.1",
     "ts-jest": "*",
     "typescript": "*"
   }

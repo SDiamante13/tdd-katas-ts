@@ -1,0 +1,11 @@
+{
+  "session_id": "a43cef49-9830-48b7-92e5-6911d61cd7c6",
+  "transcript_path": "/Users/stevendiamante/.claude/projects/-Users-stevendiamante-personal-tdd-katas-ts-katas-mars-rover/a43cef49-9830-48b7-92e5-6911d61cd7c6.jsonl",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Edit",
+  "tool_input": {
+    "file_path": "/Users/stevendiamante/personal/tdd-katas-ts/katas/mars-rover/src/MarsRover.ts",
+    "old_string": "  execute(command: string): void {\n    if (command === 'L') {\n      this.turnLeft();\n    } else if (command === 'R') {\n      this.turnRight();\n    }\n  }",
+    "new_string": "  execute(commands: string): void {\n    for (const command of commands) {\n      if (command === 'L') {\n        this.turnLeft();\n      } else if (command === 'R') {\n        this.turnRight();\n      }\n    }\n  }"
+  }
+}

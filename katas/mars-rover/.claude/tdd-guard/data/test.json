@@ -1,0 +1,26 @@
+{
+  "testModules": [
+    {
+      "moduleId": "/Users/stevendiamante/personal/tdd-katas-ts/katas/mars-rover/src/MarsRover.test.ts",
+      "tests": [
+        {
+          "name": "should turn left from North to West",
+          "fullName": "Mars Rover turning should turn left from North to West",
+          "state": "passed"
+        },
+        {
+          "name": "should turn right from North to East",
+          "fullName": "Mars Rover turning should turn right from North to East",
+          "state": "passed"
+        },
+        {
+          "name": "should turn left twice with LL command from North to South",
+          "fullName": "Mars Rover turning should turn left twice with LL command from North to South",
+          "state": "passed"
+        }
+      ]
+    }
+  ],
+  "unhandledErrors": [],
+  "reason": "passed"
+}
