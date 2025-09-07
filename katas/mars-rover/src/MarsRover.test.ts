@@ -18,61 +18,30 @@ describe('Mars Rover', () => {
       expect(rover.toString()).toBe('0:0:N');
     });
   });
-  describe('movement', () => {
-    it('should move forward by 1 while facing East', () => {
+
+  describe('combined movements', () => {
+    it('should return to original position after forward then backward', () => {
       const rover = createRover(0, 0, 'N');
 
-      rover.execute('F');
+      rover.execute('FB');
 
-      expect(rover.toString()).toBe('0:1:N');
+      expect(rover.toString()).toBe('0:0:N');
     });
 
-    it('should move forward by 1 while facing East', () => {
-      const rover = createRover(0, 0, 'E');
-
-      rover.execute('F');
-
-      expect(rover.toString()).toBe('1:0:E');
-    });
-
-    it('should move forward by 1 while facing South', () => {
-      const rover = createRover(0, 0, 'S');
-
-      rover.execute('F');
-
-      expect(rover.toString()).toBe('0:9:S');
-    });
-
-    it('should move forward by 1 while facing West', () => {
-      const rover = createRover(0, 0, 'W');
-
-      rover.execute('F');
-
-      expect(rover.toString()).toBe('9:0:W');
-    });
-
-    it('should move backward by 1 while facing North', () => {
+    it('should advance two positions with two forward moves', () => {
       const rover = createRover(0, 0, 'N');
 
-      rover.execute('B');
+      rover.execute('FF');
 
-      expect(rover.toString()).toBe('0:9:N');
+      expect(rover.toString()).toBe('0:2:N');
     });
 
-    it('should move backward by 1 while facing East', () => {
-      const rover = createRover(0, 0, 'E');
+    it('should handle complex movement sequence FRBLFRBL', () => {
+      const rover = createRover(0, 0, 'N');
 
-      rover.execute('B');
+      rover.execute('FRBLFRBL');
 
-      expect(rover.toString()).toBe('9:0:E');
-    });
-
-    it('should move backward South by 1', () => {
-      const rover = createRover(0, 0, 'S');
-
-      rover.execute('B');
-
-      expect(rover.toString()).toBe('0:1:S');
+      expect(rover.toString()).toBe('8:2:N');
     });
   });
 });

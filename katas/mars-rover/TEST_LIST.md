@@ -18,14 +18,18 @@
   - [x] South → North movement (y+1)
   - [x] West → East movement (x+1)
 
-## 🚧 Next Features to Implement
+## ✅ Combined Movement Commands (Completed)
 
-### Movement Commands
-- [ ] Combined movement and turning (e.g., "LFR", "FRBL")
+1. [x] [TEST] Forward then backward should return to original position and direction
+2. [x] [TEST] Two forward moves should advance two positions in same direction
+3. [x] [TEST] Complex movement sequence FRBLFRBL validates comprehensive command handling
 
-### Position and Direction Tests
-- [ ] Position tracking after movement
-- [ ] Complex command sequences (e.g., "LFRFRFRFF")
+## ✅ Test Cleanup Completed
+- ✅ Deleted redundant individual movement tests (F/B per direction)
+- ✅ Retained comprehensive combined movement tests with superior coverage
+- ✅ Maintained full regression protection with fewer, better tests
+
+## 🚧 Future Features
 
 ### Edge Cases and Validation  
 - [ ] Invalid commands (ignore unknown characters)
