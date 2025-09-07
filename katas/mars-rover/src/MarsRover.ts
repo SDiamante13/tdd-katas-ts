@@ -11,8 +11,21 @@ const COMMAND = {
   FORWARD: 'F'
 } as const;
 
+type Direction = 'N' | 'E' | 'S' | 'W';
+
+const LEFT_ROTATION: Direction[] = [DIRECTION.NORTH, DIRECTION.WEST, DIRECTION.SOUTH, DIRECTION.EAST];
+const RIGHT_ROTATION: Direction[] = [DIRECTION.NORTH, DIRECTION.EAST, DIRECTION.SOUTH, DIRECTION.WEST];
+const ROTATION_SIZE = 4;
+
+const MOVEMENT_DELTAS = {
+  [DIRECTION.NORTH]: { x: 0, y: 1 },
+  [DIRECTION.EAST]: { x: 1, y: 0 },
+  [DIRECTION.SOUTH]: { x: 0, y: -1 },
+  [DIRECTION.WEST]: { x: -1, y: 0 }
+} as const;
+
 export class MarsRover {
-  constructor(public x: number, public y: number, public direction: string) {}
+  constructor(public x: number, public y: number, public direction: Direction) {}
 
   execute(commands: string): void {
     for (const command of commands) {
@@ -28,26 +41,18 @@ export class MarsRover {
   }
 
   private turnLeft(): void {
-    const directions = [DIRECTION.NORTH, DIRECTION.WEST, DIRECTION.SOUTH, DIRECTION.EAST];
-    const currentIndex = directions.indexOf(this.direction as any);
-    this.direction = directions[(currentIndex + 1) % 4];
+    const currentIndex = LEFT_ROTATION.indexOf(this.direction);
+    this.direction = LEFT_ROTATION[(currentIndex + 1) % ROTATION_SIZE];
   }
 
   private turnRight(): void {
-    const directions = [DIRECTION.NORTH, DIRECTION.EAST, DIRECTION.SOUTH, DIRECTION.WEST];
-    const currentIndex = directions.indexOf(this.direction as any);
-    this.direction = directions[(currentIndex + 1) % 4];
+    const currentIndex = RIGHT_ROTATION.indexOf(this.direction);
+    this.direction = RIGHT_ROTATION[(currentIndex + 1) % ROTATION_SIZE];
   }
 
   private moveForward(): void {
-    if (this.direction === DIRECTION.NORTH) {
-      this.y += 1;
-    } else if (this.direction === DIRECTION.EAST) {
-      this.x += 1;
-    } else if (this.direction === DIRECTION.SOUTH) {
-      this.y -= 1;
-    } else if (this.direction === DIRECTION.WEST) {
-      this.x -= 1;
-    }
+    const delta = MOVEMENT_DELTAS[this.direction];
+    this.x += delta.x;
+    this.y += delta.y;
   }
 }
