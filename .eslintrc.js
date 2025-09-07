@@ -15,7 +15,12 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
     'prefer-const': 'error',
-    'no-var': 'error'
+    'no-var': 'error',
+    'complexity': ['warn', 10],
+    'max-depth': ['warn', 3],
+    'max-lines-per-function': ['warn', 30],
+    'max-nested-callbacks': ['warn', 2],
+    'max-params': ['warn', 4],
   },
   env: {
     node: true,
