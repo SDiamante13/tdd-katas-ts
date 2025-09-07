@@ -42,6 +42,12 @@ export class MarsRover {
   private moveForward(): void {
     if (this.direction === DIRECTION.NORTH) {
       this.y += 1;
+    } else if (this.direction === DIRECTION.EAST) {
+      this.x += 1;
+    } else if (this.direction === DIRECTION.SOUTH) {
+      this.y -= 1;
+    } else if (this.direction === DIRECTION.WEST) {
+      this.x -= 1;
     }
   }
 }

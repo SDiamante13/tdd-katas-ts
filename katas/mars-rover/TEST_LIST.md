@@ -7,11 +7,15 @@
 - [x] Test all direction transitions:
   - [x] Left: N→W→S→E→N (LLLL test)
   - [x] Right: N→E→S→W→N (RRRR test)
+- [x] Move forward (F) - single step in current direction
+  - [x] North movement (y+1)
+  - [x] East movement (x+1)  
+  - [x] South movement (y-1)
+  - [x] West movement (x-1)
 
 ## 🚧 Next Features to Implement
 
 ### Movement Commands
-- [ ] Move forward (F) - single step in current direction
 - [ ] Move backward (B) - single step opposite to current direction
 - [ ] Combined movement and turning (e.g., "LFR", "FRBL")
 
