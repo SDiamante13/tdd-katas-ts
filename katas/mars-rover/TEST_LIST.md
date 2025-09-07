@@ -12,11 +12,15 @@
   - [x] East movement (x+1)  
   - [x] South movement (y-1)
   - [x] West movement (x-1)
+- [x] Move backward (B) - single step opposite to current direction
+  - [x] North → South movement (y-1)
+  - [x] East → West movement (x-1)
+  - [x] South → North movement (y+1)
+  - [x] West → East movement (x+1)
 
 ## 🚧 Next Features to Implement
 
 ### Movement Commands
-- [ ] Move backward (B) - single step opposite to current direction
 - [ ] Combined movement and turning (e.g., "LFR", "FRBL")
 
 ### Position and Direction Tests

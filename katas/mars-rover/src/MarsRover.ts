@@ -8,7 +8,8 @@ const DIRECTION = {
 const COMMAND = {
   LEFT: 'L',
   RIGHT: 'R',
-  FORWARD: 'F'
+  FORWARD: 'F',
+  BACKWARD: 'B'
 } as const;
 
 type Direction = 'N' | 'E' | 'S' | 'W';
@@ -24,19 +25,27 @@ const MOVEMENT_DELTAS = {
   [DIRECTION.WEST]: { x: -1, y: 0 }
 } as const;
 
+const BACKWARD_DELTAS = {
+  [DIRECTION.NORTH]: { x: 0, y: -1 },
+  [DIRECTION.EAST]: { x: -1, y: 0 },
+  [DIRECTION.SOUTH]: { x: 0, y: 1 },
+  [DIRECTION.WEST]: { x: 1, y: 0 }
+} as const;
+
 export class MarsRover {
   constructor(public x: number, public y: number, public direction: Direction) {}
 
   execute(commands: string): void {
+    const commandActions = {
+      [COMMAND.LEFT]: () => this.turnLeft(),
+      [COMMAND.RIGHT]: () => this.turnRight(), 
+      [COMMAND.FORWARD]: () => this.moveForward(),
+      [COMMAND.BACKWARD]: () => this.moveBackward()
+    };
+
     for (const command of commands) {
-      const { LEFT, RIGHT, FORWARD } = COMMAND;
-      if (command === LEFT) {
-        this.turnLeft();
-      } else if (command === RIGHT) {
-        this.turnRight();
-      } else if (command === FORWARD) {
-        this.moveForward();
-      }
+      const action = commandActions[command as keyof typeof commandActions];
+      action?.();
     }
   }
 
@@ -52,6 +61,12 @@ export class MarsRover {
 
   private moveForward(): void {
     const delta = MOVEMENT_DELTAS[this.direction];
+    this.x += delta.x;
+    this.y += delta.y;
+  }
+
+  private moveBackward(): void {
+    const delta = BACKWARD_DELTAS[this.direction];
     this.x += delta.x;
     this.y += delta.y;
   }

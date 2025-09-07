@@ -32,6 +32,26 @@
           "name": "should move forward West by 1",
           "fullName": "Mars Rover movement should move forward West by 1",
           "state": "passed"
+        },
+        {
+          "name": "should move backward North by 1",
+          "fullName": "Mars Rover movement should move backward North by 1",
+          "state": "passed"
+        },
+        {
+          "name": "should move backward East by 1",
+          "fullName": "Mars Rover movement should move backward East by 1",
+          "state": "passed"
+        },
+        {
+          "name": "should move backward South by 1",
+          "fullName": "Mars Rover movement should move backward South by 1",
+          "state": "passed"
+        },
+        {
+          "name": "should move backward West by 1",
+          "fullName": "Mars Rover movement should move backward West by 1",
+          "state": "passed"
         }
       ]
     }

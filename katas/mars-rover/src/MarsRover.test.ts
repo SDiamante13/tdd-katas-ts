@@ -43,6 +43,34 @@ describe('Mars Rover', () => {
       expect(rover.x).toBe(-1);
       expect(rover.y).toBe(0);
     });
+
+    it('should move backward North by 1', () => {
+      const rover = new MarsRover(0, 0, 'N');
+      rover.execute('B');
+      expect(rover.x).toBe(0);
+      expect(rover.y).toBe(-1);
+    });
+
+    it('should move backward East by 1', () => {
+      const rover = new MarsRover(0, 0, 'E');
+      rover.execute('B');
+      expect(rover.x).toBe(-1);
+      expect(rover.y).toBe(0);
+    });
+
+    it('should move backward South by 1', () => {
+      const rover = new MarsRover(0, 0, 'S');
+      rover.execute('B');
+      expect(rover.x).toBe(0);
+      expect(rover.y).toBe(1);
+    });
+
+    it('should move backward West by 1', () => {
+      const rover = new MarsRover(0, 0, 'W');
+      rover.execute('B');
+      expect(rover.x).toBe(1);
+      expect(rover.y).toBe(0);
+    });
   });
 });
 
