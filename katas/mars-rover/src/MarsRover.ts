@@ -1,4 +1,4 @@
-type Direction = 'N' | 'E' | 'S' | 'W';
+export type Direction = 'N' | 'E' | 'S' | 'W';
 type Command = 'L' | 'R' | 'F' | 'B';
 
 const N: Direction = 'N';
@@ -61,6 +61,10 @@ export class MarsRover {
   get x(): number { return this._x.value; }
   get y(): number { return this._y.value; }
   get direction(): Direction { return this._direction; }
+
+  toString(): string {
+    return `${this._x.value}:${this._y.value}:${this._direction}`;
+  }
 
   execute(commands: string): void {
     const validCommands = new Set<string>([L, R, F, B]);

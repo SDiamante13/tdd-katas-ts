@@ -1,113 +1,81 @@
-import { MarsRover } from './MarsRover';
+import { Direction, MarsRover } from './MarsRover';
 
 describe('Mars Rover', () => {
   describe('turning', () => {
     it('should complete full left rotation cycle', () => {
-      const x = 0;
-      const y = 0;
-      const rover = new MarsRover(x, y, 'N');
+      const rover = createRover(0, 0, 'N');
 
       rover.execute('LLLL');
-      expect(rover.direction).toBe('N');
+
+      expect(rover.toString()).toBe('0:0:N');
     });
 
     it('should complete full right rotation cycle', () => {
-
-      const x = 0;
-      const y = 0;
-      const rover = new MarsRover(x, y, 'N');
+      const rover = createRover(0, 0, 'N');
 
       rover.execute('RRRR');
 
-      expect(rover.direction).toBe('N');
+      expect(rover.toString()).toBe('0:0:N');
     });
   });
-
   describe('movement', () => {
-    it('should move forward North by 1', () => {
-      const x = 0;
-      const y = 0;
-      const rover = new MarsRover(x, y, 'N');
+    it('should move forward by 1 while facing East', () => {
+      const rover = createRover(0, 0, 'N');
 
       rover.execute('F');
 
-      expect(rover.x).toBe(0);
-      expect(rover.y).toBe(1);
+      expect(rover.toString()).toBe('0:1:N');
     });
 
-    it('should move forward East by 1', () => {
-      const x = 0;
-      const y = 0;
-      const rover = new MarsRover(x, y, 'E');
+    it('should move forward by 1 while facing East', () => {
+      const rover = createRover(0, 0, 'E');
 
       rover.execute('F');
 
-      expect(rover.x).toBe(1);
-      expect(rover.y).toBe(0);
+      expect(rover.toString()).toBe('1:0:E');
     });
 
-    it('should move forward South by 1', () => {
-      const x = 0;
-      const y = 0;
-      const rover = new MarsRover(x, y, 'S');
+    it('should move forward by 1 while facing South', () => {
+      const rover = createRover(0, 0, 'S');
 
       rover.execute('F');
 
-      expect(rover.x).toBe(0);
-      expect(rover.y).toBe(9);
+      expect(rover.toString()).toBe('0:9:S');
     });
 
-    it('should move forward West by 1', () => {
-      const x = 0;
-      const y = 0;
-      const direction = 'W';
-
-      const rover = new MarsRover(x, y, direction);
+    it('should move forward by 1 while facing West', () => {
+      const rover = createRover(0, 0, 'W');
 
       rover.execute('F');
 
-      expect(rover.x).toBe(9);
-      expect(rover.y).toBe(0);
+      expect(rover.toString()).toBe('9:0:W');
     });
 
-    it('should move backward by 1', () => {
-      const x = 0;
-      const y = 0;
-      const direction = 'N';
-
-      const rover = new MarsRover(x, y, direction);
+    it('should move backward by 1 while facing North', () => {
+      const rover = createRover(0, 0, 'N');
 
       rover.execute('B');
 
-      expect(rover.x).toBe(0);
-      expect(rover.y).toBe(9);
+      expect(rover.toString()).toBe('0:9:N');
     });
 
-    it('should move backward East by 1', () => {
-      const x = 0;
-      const y = 0;
-      const direction = 'E';
-
-      const rover = new MarsRover(x, y, direction);
+    it('should move backward by 1 while facing East', () => {
+      const rover = createRover(0, 0, 'E');
 
       rover.execute('B');
 
-      expect(rover.x).toBe(9);
-      expect(rover.y).toBe(0);
+      expect(rover.toString()).toBe('9:0:E');
     });
 
     it('should move backward South by 1', () => {
-      const x = 0;
-      const y = 0;
-      const direction = 'S';
-
-      const rover = new MarsRover(x, y, direction);
+      const rover = createRover(0, 0, 'S');
 
       rover.execute('B');
 
-      expect(rover.x).toBe(0);
-      expect(rover.y).toBe(1);
+      expect(rover.toString()).toBe('0:1:S');
     });
   });
 });
 
+const createRover = (x: number, y: number, direction: Direction) =>
+    new MarsRover(x, y, direction);
