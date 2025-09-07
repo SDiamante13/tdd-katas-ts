@@ -1,32 +1,46 @@
+const DIRECTION = {
+  NORTH: 'N',
+  EAST: 'E', 
+  SOUTH: 'S',
+  WEST: 'W'
+} as const;
+
+const COMMAND = {
+  LEFT: 'L',
+  RIGHT: 'R',
+  FORWARD: 'F'
+} as const;
+
 export class MarsRover {
   constructor(public x: number, public y: number, public direction: string) {}
 
   execute(commands: string): void {
     for (const command of commands) {
-      if (command === 'L') {
+      const { LEFT, RIGHT, FORWARD } = COMMAND;
+      if (command === LEFT) {
         this.turnLeft();
-      } else if (command === 'R') {
+      } else if (command === RIGHT) {
         this.turnRight();
-      } else if (command === 'F') {
+      } else if (command === FORWARD) {
         this.moveForward();
       }
     }
   }
 
   private turnLeft(): void {
-    const directions = ['N', 'W', 'S', 'E'];
-    const currentIndex = directions.indexOf(this.direction);
+    const directions = [DIRECTION.NORTH, DIRECTION.WEST, DIRECTION.SOUTH, DIRECTION.EAST];
+    const currentIndex = directions.indexOf(this.direction as any);
     this.direction = directions[(currentIndex + 1) % 4];
   }
 
   private turnRight(): void {
-    const directions = ['N', 'E', 'S', 'W'];
-    const currentIndex = directions.indexOf(this.direction);
+    const directions = [DIRECTION.NORTH, DIRECTION.EAST, DIRECTION.SOUTH, DIRECTION.WEST];
+    const currentIndex = directions.indexOf(this.direction as any);
     this.direction = directions[(currentIndex + 1) % 4];
   }
 
   private moveForward(): void {
-    if (this.direction === 'N') {
+    if (this.direction === DIRECTION.NORTH) {
       this.y += 1;
     }
   }

@@ -5,7 +5,7 @@
   "tool_name": "Edit",
   "tool_input": {
     "file_path": "/Users/stevendiamante/personal/tdd-katas-ts/katas/mars-rover/src/MarsRover.ts",
-    "old_string": "  private turnRight(): void {\n    const directions = ['N', 'E', 'S', 'W'];\n    const currentIndex = directions.indexOf(this.direction);\n    this.direction = directions[(currentIndex + 1) % 4];\n  }\n}",
-    "new_string": "  private turnRight(): void {\n    const directions = ['N', 'E', 'S', 'W'];\n    const currentIndex = directions.indexOf(this.direction);\n    this.direction = directions[(currentIndex + 1) % 4];\n  }\n\n  private moveForward(): void {\n    if (this.direction === 'N') {\n      this.y += 1;\n    }\n  }\n}"
+    "old_string": "  private turnLeft(): void {\n    const directions = [DIRECTION.NORTH, DIRECTION.WEST, DIRECTION.SOUTH, DIRECTION.EAST];\n    const currentIndex = directions.indexOf(this.direction);\n    this.direction = directions[(currentIndex + 1) % 4];\n  }\n\n  private turnRight(): void {\n    const directions = [DIRECTION.NORTH, DIRECTION.EAST, DIRECTION.SOUTH, DIRECTION.WEST];\n    const currentIndex = directions.indexOf(this.direction);\n    this.direction = directions[(currentIndex + 1) % 4];\n  }",
+    "new_string": "  private turnLeft(): void {\n    const directions = [DIRECTION.NORTH, DIRECTION.WEST, DIRECTION.SOUTH, DIRECTION.EAST];\n    const currentIndex = directions.indexOf(this.direction as any);\n    this.direction = directions[(currentIndex + 1) % 4];\n  }\n\n  private turnRight(): void {\n    const directions = [DIRECTION.NORTH, DIRECTION.EAST, DIRECTION.SOUTH, DIRECTION.WEST];\n    const currentIndex = directions.indexOf(this.direction as any);\n    this.direction = directions[(currentIndex + 1) % 4];\n  }"
   }
 }
