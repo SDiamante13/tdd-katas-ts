@@ -12,10 +12,6 @@ const F: Command = 'F';
 const B: Command = 'B';
 
 interface Coordinate {
-  readonly value: number;
-}
-
-interface Delta {
   readonly x: number;
   readonly y: number;
 }
@@ -24,46 +20,41 @@ const LEFT_ROTATION: readonly Direction[] = [N, W, S, E] as const;
 const RIGHT_ROTATION: readonly Direction[] = [N, E, S, W] as const;
 const ROTATION_SIZE = 4 as const;
 
-const MOVEMENT_DELTAS: Record<Direction, Delta> = {
+const MOVEMENT_DELTAS: Record<Direction, Coordinate> = {
   [N]: { x: 0, y: 1 },
   [E]: { x: 1, y: 0 },
   [S]: { x: 0, y: -1 },
   [W]: { x: -1, y: 0 }
 } as const;
 
-const BACKWARD_DELTAS: Record<Direction, Delta> = {
+const BACKWARD_DELTAS: Record<Direction, Coordinate> = {
   [N]: { x: 0, y: -1 },
   [E]: { x: -1, y: 0 },
   [S]: { x: 0, y: 1 },
   [W]: { x: 1, y: 0 }
 } as const;
 
-const createCoordinate = (value: number): Coordinate => ({ value });
+const createCoordinate = (x: number, y: number): Coordinate => ({ x, y });
 
-const addDelta = (coordinate: Coordinate, delta: number): Coordinate => {
-  const newValue = ((coordinate.value + delta) % 10 + 10) % 10;
-  return createCoordinate(newValue);
+const applyDelta = (coordinate: Coordinate, delta: Coordinate): Coordinate => {
+  const newX = ((coordinate.x + delta.x) % 10 + 10) % 10;
+  const newY = ((coordinate.y + delta.y) % 10 + 10) % 10;
+  return createCoordinate(newX, newY);
 };
 
 type CommandHandler = () => void;
 
 export class MarsRover {
-  private readonly _x: Coordinate;
-  private readonly _y: Coordinate;
+  private _position: Coordinate;
   private _direction: Direction;
 
   constructor(x: number, y: number, direction: Direction) {
-    this._x = createCoordinate(x);
-    this._y = createCoordinate(y);
+    this._position = createCoordinate(x, y);
     this._direction = direction;
   }
 
-  get x(): number { return this._x.value; }
-  get y(): number { return this._y.value; }
-  get direction(): Direction { return this._direction; }
-
   toString(): string {
-    return `${this._x.value}:${this._y.value}:${this._direction}`;
+    return `${this._position.x}:${this._position.y}:${this._direction}`;
   }
 
   execute(commands: string): void {
@@ -96,13 +87,11 @@ export class MarsRover {
 
   private moveForward(): void {
     const delta = MOVEMENT_DELTAS[this._direction];
-    Object.assign(this._x, addDelta(this._x, delta.x));
-    Object.assign(this._y, addDelta(this._y, delta.y));
+    this._position = applyDelta(this._position, delta);
   }
 
   private moveBackward(): void {
     const delta = BACKWARD_DELTAS[this._direction];
-    Object.assign(this._x, addDelta(this._x, delta.x));
-    Object.assign(this._y, addDelta(this._y, delta.y));
+    this._position = applyDelta(this._position, delta);
   }
 }
