@@ -32,6 +32,7 @@
     "@types/supertest": "^6.0.3",
     "jest": "*",
     "jest-extended": "^6.0.0",
+    "msw": "^2.11.2",
     "pg": "^8.16.3",
     "supertest": "^7.1.4",
     "testcontainers": "^11.5.1",
